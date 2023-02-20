@@ -20,7 +20,7 @@ const Header = () => {
             navbarScroll
           >
             <Nav.Link href="#action1">Home</Nav.Link>
-            <Nav.Link href="/mycategory">Product</Nav.Link>
+            <Nav.Link href="/sellerCategoryAdd">Product</Nav.Link>
             <Nav.Link href="#action2">Clinic</Nav.Link>
             <Nav.Link href="#">Blog</Nav.Link>
             

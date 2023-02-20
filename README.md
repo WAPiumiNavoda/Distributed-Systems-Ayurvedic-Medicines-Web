@@ -17,6 +17,7 @@ react<br>
 nodeJs<br>
 
 Bootswatch
+Redux
 
 
 

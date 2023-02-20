@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/esm/Button'
 import Card from 'react-bootstrap/Card';
 import axios from 'axios'
 import Accordion from 'react-bootstrap/Accordion';
-import data from '../../../data/data'
+// import data from '../../../data/data'
 
 const Seller_CategoryAll = () => {
 
@@ -38,7 +38,7 @@ const Seller_CategoryAll = () => {
       </Link>
 
       {
-         data.map(data =>(
+         category.map((data) =>(
           <Accordion key= {data._id}>
           <Card className='mb-5'>
           <Card.Header as="h5">{data.title}</Card.Header>

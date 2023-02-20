@@ -51,6 +51,33 @@ const RegisterUser = () => {
      
   }
 
+
+  //image addedd
+  const postDetails =(pic)=>{
+    setPicMessage(null)
+    if(!pic){
+      return setPicMessage('Please select the image')
+    }
+    setPicMessage(null);
+
+    if(pic.type ==='image/jpg' || pic.type ==='image/png'){
+      const data = new FormData();
+      data.append('file',pic)
+      data.append('upload_preset','Ayurvita');
+      data.append('cloud_name','flocktogether');
+      fetch("https://api.cloudinary.com/v1_1/flocktogether/image/upload",{
+        method:"post",
+        body: data
+      }).then((res)=>res.json()).then((data)=>{
+        console.log(data);
+        setPic(data.url.toString())
+      }).catch((err)=>{
+        console.log(err);
+      })
+    }else{
+      return setPicMessage('Pleace select .PNG or .JPGE images');  
+     }
+  }
   return (
     <MainScreen>
     <hr />
@@ -90,14 +117,20 @@ const RegisterUser = () => {
     onChange={(e)=> setConfirmPassword(e.target.value)}
     />
   </Form.Group>
+{picMessage && (
+  <ErrorMessages variant='danger'>{picMessage}</ErrorMessages>
+)
 
-  <Form.Group controlId="formFile" className="mb-3">
-    <Form.Label>Uploard Image</Form.Label>
-    <Form.Control type="file"
-      value={pic}
-      onChange={(e)=> setPic(e.target.value)}
-    />
-  </Form.Group>
+}
+<Form.Group controlId="formFile" className="mb-3">
+        <Form.Label>Default file input example</Form.Label>
+        <Form.Control type="file"
+             onChange={(e)=> postDetails(e.target.files[0])}
+             lable='Upload profile iamge'
+             custom
+        />
+</Form.Group>
+
 
   <Button variant="primary" type="submit">
     Submit

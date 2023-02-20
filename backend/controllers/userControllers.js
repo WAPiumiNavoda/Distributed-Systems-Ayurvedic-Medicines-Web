@@ -1,5 +1,6 @@
 const User = require('../models/userModel')
 const asyncHandler = require('express-async-handler');
+const genarateToken = require('../utils/genarteToken');
 
 const registerUser = asyncHandler(async(req,res) =>{
     const { name,email, password,pic }= req.body;
@@ -27,7 +28,7 @@ const registerUser = asyncHandler(async(req,res) =>{
             email: user.email,
             isAdmin:user.isAdmin,
             pic: user.pic,
-            // token:genarateToken(user._id)
+            token:genarateToken(user._id)
         })
     }else{
           res.status(400)
@@ -40,7 +41,7 @@ const registerUser = asyncHandler(async(req,res) =>{
 //login
 const authUser = asyncHandler(async (req,res) =>{
     const {email,password} = req.body;
-    
+
     const user = await User.findOne({email});
 
     //match the registered password and the entered passsword
@@ -51,7 +52,7 @@ const authUser = asyncHandler(async (req,res) =>{
             email:user.email,
             isAdmin: user.isAdmin,
             pic:user.pic,
-            // token: genarateToken(user._id),
+            token: genarateToken(user._id),
         })
     }else{
         res.status(400)

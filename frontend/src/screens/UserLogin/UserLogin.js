@@ -9,14 +9,20 @@ import axios from 'axios';
 import LoadingPages from '../../components/LoadingPages/LoadingPages';
 import ErrorMessages from '../../components/Errormeesages/ErrorMessages';
 
-const UserLogin = () => {
+const UserLogin = ({history}) => {
 
  const [email,setEmail] = useState("");
  const [password,setPassword] = useState("");
  const [error,setError] = useState(false);
  const [loading,setLoading] = useState(false);
 
+// useEffect(()=>{
+//     const userInfo = localStorage.getItem("userInfo")
 
+//     if(userInfo){
+//       history.push("/adminhome")
+//     }
+// },[history])
 
  const submitHandler =async (e)=>{
     e.preventDefault();
@@ -37,13 +43,14 @@ const UserLogin = () => {
         setLoading(false)
     } catch (error) {
         setError(error.response.data.message)
+        setLoading(false)
     }
  }
 
   return (
     <MainScreen>
     <div className='m-5'>
-    {error && <ErrorMessages>{error}</ErrorMessages>}
+    {error && <ErrorMessages variant='danger'>{error}</ErrorMessages>}
     {loading && <LoadingPages />}
     <h1>Login</h1>
     <hr />

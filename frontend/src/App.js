@@ -8,6 +8,7 @@ import Seller_CategoryAdd from './screens/AdminPages/AddPages/Seller_CategoryAdd
 import Seller_CategoryAll from './screens/AdminPages/AllPages/Seller_CategoryAll';
 import UserLogin from './screens/UserLogin/UserLogin';
 import RegisterUser from './screens/RegisterUsers/RegisterUser';
+import AdminHome from './screens/AdminPages/AdminHome/AdminHome';
 
 
 const App = () => {
@@ -16,11 +17,14 @@ const App = () => {
      <BrowserRouter>
     <Header />
     <Routes>
+     <Route path='/' element={<AdminHome />}/>
       <Route path='/home' element={<HomePage />}/>
       <Route path='/sellerCategoryAdd' element={<Seller_CategoryAdd />}/>
       <Route path='/sellerCategoryAll' element={<Seller_CategoryAll />}/>
        <Route path='/userlogin' element={<UserLogin />}/>
        <Route path='/userregister' element={<RegisterUser />}/>
+
+       <Route path='/adminhome' element={<AdminHome />}/>
     </Routes>
     <Footer />
     </BrowserRouter>

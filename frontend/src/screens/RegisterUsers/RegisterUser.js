@@ -19,6 +19,8 @@ const RegisterUser = () => {
  const [loading,setLoading] = useState(false)  
  const [error,setError] = useState(false) 
 
+
+ //User registration fucntion
   const registerHandler= async (e)=>{
     e.preventDefault();
 
@@ -47,12 +49,11 @@ const RegisterUser = () => {
         setError(error.response.data.message);
       }
     }
-    console.log(email,name,pic);
-     
+    console.log(email,name,pic);  
   }
 
 
-  //image addedd
+  //image upload function
   const postDetails =(pic)=>{
     setPicMessage(null)
     if(!pic){
@@ -78,6 +79,8 @@ const RegisterUser = () => {
       return setPicMessage('Pleace select .PNG or .JPGE images');  
      }
   }
+
+
   return (
     <MainScreen>
     <hr />

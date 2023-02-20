@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const { connect } = require('mongoose');
 const connectDB = require('./config/db');//connect the db
 const userRouter = require('./routes/userRoutes');
+const { notFound, errorHandler } = require('./middlewares/errorMiddelware');
 
 const app = express();
 dotenv.config();
@@ -22,6 +23,9 @@ app.get('/api/category',(req,res)=>{
 // create routes here
 app.use('/api/users',userRouter);
 
+//error handling
+app.use(notFound);
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 8080
 

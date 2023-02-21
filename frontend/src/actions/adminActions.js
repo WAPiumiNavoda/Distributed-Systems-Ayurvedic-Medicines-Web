@@ -77,11 +77,19 @@ export const register = (name, email, password, pic) => async (dispatch) => {
 	  );
   
 	  dispatch({ type: ADMIN_REGISTER_SUCCESS, payload: data });
-  
-	  dispatch({ type: ADMIN_LOGIN_SUCCESS, payload: data });
-      setTimeout(function () {
+	  swal({
+		title: "Success !!!",
+		text: "Registration is Successful.",
+		icon: "success",
+		timer: 2000,
+		button: false,
+	});
+	setTimeout(function () {
 		window.location.href = "/sellerCategoryAll";
 	}, 2000);
+  
+	  dispatch({ type: ADMIN_LOGIN_SUCCESS, payload: data });
+     
 	  localStorage.setItem("userInfo", JSON.stringify(data));
 	} catch (error) {
 	  dispatch({

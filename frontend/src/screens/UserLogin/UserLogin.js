@@ -1,4 +1,5 @@
-import React,{ useState,useEffect } from 'react'
+import React,{ useState,useEffect } from 'react';
+import {useDispatch,useSelector} from "react-redux";
 import Row from 'react-bootstrap/esm/Row';
 import {Link} from 'react-router-dom'
 import Form from 'react-bootstrap/Form';
@@ -8,13 +9,20 @@ import Col from 'react-bootstrap/esm/Col';
 import axios from 'axios';
 import LoadingPages from '../../components/LoadingPages/LoadingPages';
 import ErrorMessages from '../../components/Errormeesages/ErrorMessages';
+import { adminLogin } from "../../actions/adminActions";
 
-const UserLogin = ({history}) => {
+const UserLogin = () => {
 
  const [email,setEmail] = useState("");
  const [password,setPassword] = useState("");
- const [error,setError] = useState(false);
- const [loading,setLoading] = useState(false);
+ //const [error,setError] = useState(false);
+ //const [loading,setLoading] = useState(false);
+
+ const dispatch = useDispatch();
+
+ const admin_Login = useSelector((state) => state.admin_Login);
+ const { loading, error } = admin_Login;
+
 
 // useEffect(()=>{
 //     const userInfo = localStorage.getItem("userInfo")
@@ -24,28 +32,33 @@ const UserLogin = ({history}) => {
 //     }
 // },[history])
 
- const submitHandler =async (e)=>{
-    e.preventDefault();
-    try {
-        const config = {
-            headers: {
-                "Content-type" : "application/json"
-            }
-        }
-        setLoading(true)
-        const { data } =await axios.post('/api/users/login', {
-            email,
-            password
-        }, config);
+//  const submitHandler =async (e)=>{
+//     e.preventDefault();
+//     try {
+//         const config = {
+//             headers: {
+//                 "Content-type" : "application/json"
+//             }
+//         }
+//         setLoading(true)
+//         const { data } =await axios.post('/api/users/login', {
+//             email,
+//             password
+//         }, config);
         
-        console.log(data);
-        localStorage.setItem('userInfo',JSON.stringify);
-        setLoading(false)
-    } catch (error) {
-        setError(error.response.data.message)
-        setLoading(false)
-    }
- }
+//         console.log(data);
+//         localStorage.setItem('userInfo',JSON.stringify);
+//         setLoading(false)
+//     } catch (error) {
+//         setError(error.response.data.message)
+//         setLoading(false)
+//     }
+//  }
+
+const submitHandler = (e) => {
+  e.preventDefault();
+  dispatch(adminLogin(email, password));
+};
 
   return (
     <MainScreen>

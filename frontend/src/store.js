@@ -3,13 +3,13 @@ import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 
 import {
-	adminLoginReducer,
+	adminLoginReducer, adminRegisterReducer,
 } from "./reducers/adminReducers";
 
 
 const reducer = combineReducers({
 	admin_Login: adminLoginReducer,
-		
+	adminRegistar: adminRegisterReducer,
 });
 
 const adminInfoFromStorage = localStorage.getItem("adminInfo") ? JSON.parse(localStorage.getItem("adminInfo")) : null;

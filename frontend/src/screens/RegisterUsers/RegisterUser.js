@@ -1,12 +1,14 @@
-import React,{ useState} from 'react'
+import React,{ useState,useEffect} from 'react'
 import MainScreen from '../../components/MainScreen/MainScreen'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import ErrorMessages from '../../components/Errormeesages/ErrorMessages';
 import LoadingPages from '../../components/LoadingPages/LoadingPages';
 import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { register } from '../../actions/adminActions';
 
-const RegisterUser = () => {
+const RegisterUser = ({history}) => {
 
  const [email,setEmail] = useState("");
  const [name,setName]= useState("");
@@ -15,42 +17,65 @@ const RegisterUser = () => {
  const [confirmpassword,setConfirmPassword]= useState("");
  const [message,setMessage]= useState(null);
  const [picMessage,setPicMessage]= useState(null); 
+ 
 
- const [loading,setLoading] = useState(false)  
- const [error,setError] = useState(false) 
+//  const [loading,setLoading] = useState(false)  
+//  const [error,setError] = useState(false) 
 
+const dispatch = useDispatch();
+ const adminRegistar= useSelector((state)=> state.adminRegistar);
+ const { loading,error,userInfo}= adminRegistar;
+
+
+ //back to mynotepage
+//  useEffect(() => {
+//    if(userInfo){
+//   history.push('/category')
+//  }
+//  }, [history,userInfo])
+ 
+
+ const registerHandler= async (e)=>{
+   e.preventDefault();
+    
+   if(password !== confirmpassword){
+    setMessage('Password do not match')
+   }else{
+    dispatch(register(name,email,password,pic))
+   }
+ }
 
  //User registration fucntion
-  const registerHandler= async (e)=>{
-    e.preventDefault();
+  // const registerHandler= async (e)=>{
+  //   e.preventDefault();
 
-    if(password !== confirmpassword){
-       setMessage('Password Do Not Match');
-    }else{
-      setMessage(null)
-      try {
-        const config = {
-          headers: {
-            "Content-type" :"application/json"
-          },
-        };
+  //   if(password !== confirmpassword){
+  //      setMessage('Password Do Not Match');
+  //   }else{
+  //     setMessage(null)
+  //     try {
+  //       const config = {
+  //         headers: {
+  //           "Content-type" :"application/json"
+  //         },
+  //       };
 
-        setLoading(true)
+  //       setLoading(true)
 
-        const { data } = await axios.post(
-          "api/users",
-          { name,pic,email,password },
-          config
-        );
+  //       const { data } = await axios.post(
+  //         "api/users",
+  //         { name,pic,email,password },
+  //         config
+  //       );
 
-        setLoading(false);
-        localStorage.setItem("userInfo",JSON.stringify(data));
-      } catch (error) {
-        setError(error.response.data.message);
-      }
-    }
-    console.log(email,name,pic);  
-  }
+  //       setLoading(false);
+  //       localStorage.setItem("userInfo",JSON.stringify(data));
+  //     } catch (error) {
+  //       setError(error.response.data.message);
+  //     }
+  //   }
+  //   console.log(email,name,pic);  
+  // }
 
 
   //image upload function

@@ -4,9 +4,22 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import NavDropdown from 'react-bootstrap/NavDropdown'; 
+import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux';
+import { adminLogout } from '../../actions/adminActions'
 
 const Header = () => {
+
+  // const dispatch = useDispatch();
+  // const adminLogin = useSelector((state)=>state.adminLogin);
+  // const { userInfo } = adminLogin();
+
+  // const logoutHandler=()=>{
+  //   dispatch(adminLogout());
+  // }
+
+
   return (
     <div>
         <Navbar bg="light" expand="lg">
@@ -30,7 +43,7 @@ const Header = () => {
           <i class="bi bi-cart px-5"></i>
           <NavDropdown title="navodapiumi691@gmail.com" id="navbarScrollingDropdown">
              
-              <NavDropdown.Item href="#action4">
+              <NavDropdown.Item >
                 Lonout
               </NavDropdown.Item>
               <NavDropdown.Divider />

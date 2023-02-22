@@ -26,4 +26,18 @@ const  createCategory = asyncHandler(async (req, res) => {
   });
 
 
-module.exports={ getCategory,createCategory }
+  //Get one category controller
+const getCategoryById = asyncHandler(async (req,res)=>{
+    const category= await Category.findById(req.params.id);
+
+    if(category){
+     res.json(category);
+    }else{
+     res.status(404).json({message: "Category not found"});
+    }
+    res.json(note);
+ }
+)
+
+
+module.exports={ getCategory,createCategory,getCategoryById }

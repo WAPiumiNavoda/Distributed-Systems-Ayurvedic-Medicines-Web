@@ -43,8 +43,8 @@ const Header = () => {
           <i class="bi bi-cart px-5"></i>
           <NavDropdown title="navodapiumi691@gmail.com" id="navbarScrollingDropdown">
              
-              <NavDropdown.Item >
-                Lonout
+              <NavDropdown.Item href="/" >
+                Logout
               </NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="/adminhome">

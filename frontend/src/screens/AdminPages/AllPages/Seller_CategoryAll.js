@@ -6,20 +6,29 @@ import Card from 'react-bootstrap/Card';
 import axios from 'axios'
 import Accordion from 'react-bootstrap/Accordion';
 // import data from '../../../data/data'
+import { useDispatch,useSelector } from 'react-redux'
+import { listCategory } from '../../../actions/categoryAction';
 
 const Seller_CategoryAll = () => {
+   
+    const dispatch =useDispatch();
 
-    const [category,setCategory] = useState([]);
+    const categoryList = useSelector((state) =>state.categoryList);
+    const { loading,category,error} =categoryList;
 
-    const fetchCategory = async() =>{
-      const {data} = await axios.get('/api/category');
-      setCategory(data); 
-    }
-    // console.log(data);
+    // const [category,setCategory] = useState([]);
+
+    // const fetchCategory = async() =>{
+    //   const {data} = await axios.get('/api/category');
+    //   setCategory(data); 
+    // }
+    console.log(category);
   
+
+     //use the action function here in categoryAction.js
     useEffect(() => {
-      fetchCategory();
-    }, [ ])
+      dispatch(listCategory())
+    }, [dispatch])
     
     const deleteHandler = (id) =>{
       if(window.confirm('Are You Sure')){
@@ -38,7 +47,7 @@ const Seller_CategoryAll = () => {
       </Link>
 
       {
-         category.map((data) =>(
+         category?.map((data) =>(
           <Accordion key= {data._id}>
           <Card className='mb-5'>
           <Card.Header as="h5">{data.title}</Card.Header>

@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const { connect } = require('mongoose');
 const connectDB = require('./config/db');//connect the db
 const userRouter = require('./routes/userRoutes');
+const categoryRouter = require('./routes/categoryRoutes');
 const { notFound, errorHandler } = require('./middlewares/errorMiddelware');
 
 const app = express();
@@ -22,6 +23,7 @@ app.get('/api/category',(req,res)=>{
 
 // create routes here
 app.use('/api/users',userRouter);
+app.use('/api/category',categoryRouter);
 
 //error handling
 app.use(notFound);

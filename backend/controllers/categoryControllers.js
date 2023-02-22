@@ -39,5 +39,36 @@ const getCategoryById = asyncHandler(async (req,res)=>{
  }
 )
 
+//Update category controller
+const updateCategory = asyncHandler(async (req, res) => {
+    const { foodname, price, category, pic } = req.body;
+  
+    const product = await Category.findById(req.params.id);
+  
+    if (product.user.toString() !== req.user._id.toString()) {
+      res.status(401);
+      throw new Error("You can't perform this action");
+    }
+  
+    if (product) {
+      product.foodname = foodname;
+      product.price = price;
+      product.category = category;
+      product.pic = pic;
+  
+      const updatedCategory = await product.save();
+      res.json(updatedCategory);
+    } else {
+      res.status(404);
+      throw new Error("Category not found");
+    }
+  });
+  
 
-module.exports={ getCategory,createCategory,getCategoryById }
+
+module.exports={ 
+    getCategory,
+    createCategory,
+    getCategoryById,
+    updateCategory 
+}

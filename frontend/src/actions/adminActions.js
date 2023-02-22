@@ -55,10 +55,8 @@ export function authHeader() {
 export const adminLogout = () => async (dispatch) => {
 	localStorage.removeItem("adminInfo");
 	dispatch({ type: ADMIN_LOGOUT });
-	setTimeout(function () {
-		window.location.href = "/";
-	}, 2000);
 };
+
 
 export const register = (name, email, password, pic) => async (dispatch) => {
 	try {

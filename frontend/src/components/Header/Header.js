@@ -11,15 +11,16 @@ import { adminLogout } from '../../actions/adminActions'
 
 const Header = () => {
 
-  // const dispatch = useDispatch();
-  // const adminLogin = useSelector((state)=>state.adminLogin);
-  // const { userInfo } = adminLogin();
+  const dispatch = useDispatch();
 
-  // const logoutHandler=()=>{
-  //   dispatch(adminLogout());
-  // }
+  const admin_Login= useSelector((state)=> state.admin_Login);
 
+  const { adminInfo } = admin_Login;
 
+  const logoutHandler=()=>{
+    dispatch(adminLogout());
+  }
+ 
   return (
     <div>
         <Navbar bg="light" expand="lg">
@@ -43,7 +44,7 @@ const Header = () => {
           <i class="bi bi-cart px-5"></i>
           <NavDropdown title="navodapiumi691@gmail.com" id="navbarScrollingDropdown">
              
-              <NavDropdown.Item href="/" >
+              <NavDropdown.Item onClick={logoutHandler} >
                 Logout
               </NavDropdown.Item>
               <NavDropdown.Divider />

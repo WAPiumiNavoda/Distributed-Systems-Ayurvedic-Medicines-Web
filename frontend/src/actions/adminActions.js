@@ -53,8 +53,13 @@ export function authHeader() {
 }
 
 export const adminLogout = () => async (dispatch) => {
+	
 	localStorage.removeItem("adminInfo");
+	setTimeout(function () {
+		window.location.href = "/";
+	}, 2000);
 	dispatch({ type: ADMIN_LOGOUT });
+	
 };
 
 

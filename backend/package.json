@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "client": "npm start --prefix frontend",
-    "dev": "concurrently \"npm start\" \"npm run client\""
+    "dev": "nodemon server.js"
   },
   "author": "",
   "license": "ISC",

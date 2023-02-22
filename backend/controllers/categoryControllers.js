@@ -63,6 +63,24 @@ const updateCategory = asyncHandler(async (req, res) => {
       throw new Error("Category not found");
     }
   });
+
+  //delete category controller
+const deleteCategory= asyncHandler(async (req, res) => {
+    const product = await Category.findById(req.params.id);
+  
+    if ( product.user.toString() !== req.user._id.toString()) {
+      res.status(401);
+      throw new Error("You can't perform this action");
+    }
+  
+    if ( product) {
+      await  product.remove();
+      res.json({ message: "Product Removed" });
+    } else {
+      res.status(404);
+      throw new Error("Note not Found");
+    }
+  });
   
 
 
@@ -70,5 +88,6 @@ module.exports={
     getCategory,
     createCategory,
     getCategoryById,
-    updateCategory 
+    updateCategory ,
+    deleteCategory
 }

@@ -5,11 +5,14 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import {
 	adminLoginReducer, adminRegisterReducer,
 } from "./reducers/adminReducers";
+import { categoryListReducer } from "./reducers/categoryReducers";
 
 
+//create your states here
 const reducer = combineReducers({
 	admin_Login: adminLoginReducer,
 	adminRegistar: adminRegisterReducer,
+	categoryList: categoryListReducer,
 });
 
 const adminInfoFromStorage = localStorage.getItem("adminInfo") ? JSON.parse(localStorage.getItem("adminInfo")) : null;

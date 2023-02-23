@@ -7,7 +7,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown'; 
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
-import { adminLogout } from '../../actions/adminActions'
+import { adminLogout } from '../../actions/userActions'
 
 const Header = () => {
 

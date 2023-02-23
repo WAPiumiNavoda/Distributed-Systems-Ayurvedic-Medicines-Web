@@ -6,7 +6,7 @@ import {
 	ADMIN_REGISTER_FAIL,
 	ADMIN_REGISTER_REQUEST,
 	ADMIN_REGISTER_SUCCESS,
-} from "../constants/adminConstants";
+} from "../constants/userConstants";
 import axios from "axios";
 import swal from "sweetalert";
 

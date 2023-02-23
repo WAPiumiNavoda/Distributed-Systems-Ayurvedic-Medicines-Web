@@ -7,7 +7,7 @@ import {
 	ADMIN_REGISTER_REQUEST,
 	ADMIN_REGISTER_SUCCESS,
 	
-} from "../constants/adminConstants";
+} from "../constants/userConstants";
 
 export const adminLoginReducer = (state = {}, action) => {
 	switch (action.type) {

@@ -4,7 +4,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 
 import {
 	adminLoginReducer, adminRegisterReducer,
-} from "./reducers/adminReducers";
+} from "./reducers/userReducers";
 import { categoryListReducer } from "./reducers/categoryReducers";
 
 

@@ -6,7 +6,7 @@ import ErrorMessages from '../../components/Errormeesages/ErrorMessages';
 import LoadingPages from '../../components/LoadingPages/LoadingPages';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
-import { register } from '../../actions/adminActions';
+import { register } from '../../actions/userActions';
 
 const RegisterUser = ({history}) => {
 

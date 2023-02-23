@@ -93,7 +93,7 @@ export const register = (name, email, password, pic) => async (dispatch) => {
   
 	  dispatch({ type: ADMIN_LOGIN_SUCCESS, payload: data });
      
-	  localStorage.setItem("userInfo", JSON.stringify(data));
+	  localStorage.setItem("adminInfo", JSON.stringify(data));
 	} catch (error) {
 	  dispatch({
 		type: ADMIN_REGISTER_FAIL,

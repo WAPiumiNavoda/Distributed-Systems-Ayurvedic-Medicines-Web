@@ -17,7 +17,7 @@ export const listCategory = () => async (dispatch, getState) => {
     });
 
     const {
-      adminLogin: { adminInfo },
+      admin_Login: { adminInfo },
     } = getState();
 
     const config = {
@@ -26,7 +26,7 @@ export const listCategory = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get(`/api/category/getCategory`, config);
+    const { data } = await axios.get(`api/category/getCategory`, config);
 
     dispatch({
       type: PRODUCT_LIST_SUCCESS,

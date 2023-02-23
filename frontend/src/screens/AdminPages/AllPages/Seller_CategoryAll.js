@@ -50,11 +50,14 @@ const Seller_CategoryAll = () => {
          category?.map((data) =>(
           <Accordion key= {data._id}>
           <Card className='mb-5'>
-          <Card.Header as="h5">{data.title}</Card.Header>
+          <Card.Header as="h5">{data.foodname}</Card.Header>
           <Card.Body>
-            <Card.Title>{data.content}</Card.Title>
+            <Card.Title>{data.price}</Card.Title>
             <Card.Text>
               {data.category}
+            </Card.Text>
+            <Card.Text>
+              {data.pic}
             </Card.Text>
             <Button href={`/category/${data._id}`} className='mx-5' variant="primary">Edit</Button>
             <Button variant="danger" onClick={()=> deleteHandler(data._id)}>Delete</Button>

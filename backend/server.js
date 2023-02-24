@@ -5,6 +5,8 @@ const { connect } = require('mongoose');
 const connectDB = require('./config/db');//connect the db
 const userRouter = require('./routes/userRoutes');
 const categoryRouter = require('./routes/categoryRoutes');
+const sellerRouter = require('./routes/sellerRoutes');
+const adminRouter = require('./routes/adminRoutes');
 const { notFound, errorHandler } = require('./middlewares/errorMiddelware');
 
 const app = express();
@@ -24,6 +26,9 @@ app.get('/api/category',(req,res)=>{
 // create routes here
 app.use('/api/users',userRouter);
 app.use('/api/category',categoryRouter);
+app.use('/api/seller',sellerRouter);
+app.use('/api/admin',adminRouter);
+
 
 //error handling
 app.use(notFound);

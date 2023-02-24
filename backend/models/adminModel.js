@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
-const useSchema = mongoose.Schema(
+const adminSchema = mongoose.Schema(
     {
         name:{
             type:String,
@@ -13,7 +13,7 @@ const useSchema = mongoose.Schema(
          password:{
             type:String,
         },
-        isUser:{
+        isAdmin:{
             type: Boolean,
             default: false,
         },
@@ -29,7 +29,7 @@ const useSchema = mongoose.Schema(
 );
 
 //encrypt the user password
-useSchema.pre('save',async function(next){
+adminSchema.pre('save',async function(next){
     if(!this.isModified('password')){
        next();
     }
@@ -39,10 +39,10 @@ useSchema.pre('save',async function(next){
 });
 
 //decrypt the password
-useSchema.methods.matchPassword = async function (enteredPassword){
+adminSchema.methods.matchPassword = async function (enteredPassword){
     return await bcrypt.compare(enteredPassword,this.password);
 }
 
 
-const User = mongoose.model("Users",useSchema);
-module.exports = User;
+const Admin = mongoose.model("Admins",adminSchema);
+module.exports = Admin;

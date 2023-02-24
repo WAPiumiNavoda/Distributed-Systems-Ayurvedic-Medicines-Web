@@ -26,7 +26,7 @@ const registerUser = asyncHandler(async(req,res) =>{
             _id:user._id,
             name:user.name,
             email: user.email,
-            isAdmin:user.isAdmin,
+            isUser:user.isUser,
             pic: user.pic,
             token:genarateToken(user._id)
         })
@@ -50,7 +50,7 @@ const authUser = asyncHandler(async (req,res) =>{
             _id:user._id,
             name:user.name,
             email:user.email,
-            isAdmin: user.isAdmin,
+            isUser: user.isUser,
             pic:user.pic,
             token: genarateToken(user._id),
         })

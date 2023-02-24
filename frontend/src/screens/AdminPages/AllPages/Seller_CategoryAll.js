@@ -35,13 +35,12 @@ const Seller_CategoryAll = () => {
     
     const deleteHandler = (id) =>{
       if(window.confirm('Are You Sure')){
-  
       }
     }
 
   return (
     <div>
-         <MainScreen title={`Welcome ${adminInfo.name}, See and Change your category here`}>
+         <MainScreen>
          All Category<br/>
         <Link to='/sellerCategoryAdd'>
         <Button  className='mt-4 mb-5'>

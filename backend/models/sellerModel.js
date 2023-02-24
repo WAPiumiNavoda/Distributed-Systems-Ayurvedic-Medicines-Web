@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
-const useSchema = mongoose.Schema(
+const sellerSchema = mongoose.Schema(
     {
         name:{
             type:String,
@@ -13,7 +13,7 @@ const useSchema = mongoose.Schema(
          password:{
             type:String,
         },
-        isUser:{
+        isSeller:{
             type: Boolean,
             default: false,
         },
@@ -29,7 +29,7 @@ const useSchema = mongoose.Schema(
 );
 
 //encrypt the user password
-useSchema.pre('save',async function(next){
+sellerSchema.pre('save',async function(next){
     if(!this.isModified('password')){
        next();
     }
@@ -39,10 +39,10 @@ useSchema.pre('save',async function(next){
 });
 
 //decrypt the password
-useSchema.methods.matchPassword = async function (enteredPassword){
+sellerSchema.methods.matchPassword = async function (enteredPassword){
     return await bcrypt.compare(enteredPassword,this.password);
 }
 
 
-const User = mongoose.model("Users",useSchema);
-module.exports = User;
+const Seller = mongoose.model("Sellers",sellerSchema);
+module.exports = Seller;

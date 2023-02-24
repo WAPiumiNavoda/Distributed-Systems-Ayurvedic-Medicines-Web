@@ -10,6 +10,7 @@ import UserLogin from './screens/UserLogin/UserLogin';
 import RegisterUser from './screens/RegisterUsers/RegisterUser';
 import AdminHome from './screens/AdminPages/AdminHome/AdminHome';
 import TopHome from './screens/HomePage/TopHome';
+import CartCheckout from './screens/CartCheckOut/CartCheckout';
 
 
 const App = () => {
@@ -28,7 +29,9 @@ const App = () => {
        <Route path='/adminhome' element={<AdminHome />}/>
 
        <Route path='/tophome' element={<TopHome />}/>
-       
+
+       <Route path='/cartC' element={<CartCheckout />}/>
+
     </Routes>
     <Footer />
     </BrowserRouter>

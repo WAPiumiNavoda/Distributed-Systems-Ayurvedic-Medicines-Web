@@ -1,5 +1,5 @@
 import React from 'react'
-import Button from 'react-bootstrap/Button';
+import {Button, Badge,Dropdown } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
@@ -8,6 +8,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { adminLogout } from '../../actions/userActions'
+import { FaShoppingCart } from "react-icons/fa";
 
 const Header = () => {
 
@@ -41,7 +42,15 @@ const Header = () => {
           </Nav>
          
           <i class="bi bi-bell px-2"></i>
-          <i class="bi bi-cart px-5"></i>
+          {/* <i class="bi bi-cart px-5"></i> */}
+          <Dropdown alignRight className='px-3'>
+            <Dropdown.Toggle variant="dark">
+              <FaShoppingCart color="white" fontSize="25px" />
+              <Badge>0</Badge>
+            </Dropdown.Toggle>
+          </Dropdown>
+
+              {/* <Badge>{cart.length}</Badge> */}
           <NavDropdown title="navodapiumi691@gmail.com" id="navbarScrollingDropdown">
              
               <NavDropdown.Item onClick={logoutHandler} >

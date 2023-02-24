@@ -16,6 +16,9 @@ const Seller_CategoryAll = () => {
     const categoryList = useSelector((state) =>state.categoryList);
     const { loading,category,error} =categoryList;
 
+    const admin_Login = useSelector((state)=> state.admin_Login);
+    const { adminInfo } = admin_Login;
+
     // const [category,setCategory] = useState([]);
 
     // const fetchCategory = async() =>{
@@ -38,7 +41,7 @@ const Seller_CategoryAll = () => {
 
   return (
     <div>
-         <MainScreen title="Welcome Piumi, See and Change your category here">
+         <MainScreen title={`Welcome ${adminInfo.name}, See and Change your category here`}>
          All Category<br/>
         <Link to='/sellerCategoryAdd'>
         <Button  className='mt-4 mb-5'>

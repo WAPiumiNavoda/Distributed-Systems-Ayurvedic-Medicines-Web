@@ -108,7 +108,7 @@ export const register = (name, email, password, pic) => async (dispatch) => {
 		button: false,
 	});
 	setTimeout(function () {
-		window.location.href = "/sellerCategoryAll";
+		window.location.href = "/sellerall";
 	}, 2000);
   
 	  dispatch({ type: ADMIN_LOGIN_SUCCESS, payload: data });

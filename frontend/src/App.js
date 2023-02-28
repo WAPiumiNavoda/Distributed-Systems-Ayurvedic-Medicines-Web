@@ -11,6 +11,8 @@ import RegisterUser from './screens/RegisterUsers/RegisterUser';
 import AdminHome from './screens/AdminPages/AdminHome/AdminHome';
 import TopHome from './screens/HomePage/TopHome';
 import CartCheckout from './screens/CartCheckOut/CartCheckout';
+import SellerHome from './screens/SellerPages/SellerHome';
+import SellerAllPage from './screens/SellerPages/SellerAllPage/SellerAllPage';
 
 
 const App = () => {
@@ -31,6 +33,9 @@ const App = () => {
        <Route path='/tophome' element={<TopHome />}/>
 
        <Route path='/cartC' element={<CartCheckout />}/>
+
+       <Route path='/sellerhome' element={<SellerHome />}/>
+       <Route path='/sellerall' element={<SellerAllPage />}/>
 
     </Routes>
     <Footer />

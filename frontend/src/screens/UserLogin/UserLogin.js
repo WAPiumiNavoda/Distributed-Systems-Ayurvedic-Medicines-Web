@@ -90,14 +90,13 @@ const submitHandler = (e) => {
 
     <h1 style={{color:'#79d279'}} className="my-5 display-3 fw-bold ls-tight px-3">
       The best offer <br />
-      <span className="text-primary">for your business</span>
+      <span className="text-primary">for your Ayurvedic Lifestyle</span>
     </h1>
 
     <p className='px-3' style={{color: 'hsl(217, 10%, 50.8%)'}}>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      Eveniet, itaque accusantium odio, soluta, corrupti aliquam
-      quibusdam tempora at cupiditate quis eum maiores libero
-      veritatis? Dicta facilis sint aliquid ipsum atque?
+    It’s based on the belief that health and wellness depend on a delicate 
+    balance between the mind, body, and spirit. Its main goal is to promote good health, not fight disease.
+    But treatments may be geared toward specific health problems.
     </p>
 
   </MDBCol>

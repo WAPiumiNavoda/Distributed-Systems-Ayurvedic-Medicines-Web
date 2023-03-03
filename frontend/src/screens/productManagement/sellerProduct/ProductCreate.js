@@ -1,26 +1,33 @@
 import React, { useEffect, useState } from "react";
 import { Button, Card, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { createProductAction } from "../../../actions/productAction";
-import { authHeader } from "../../../actions/supplierAction";
-import Loading from "../../../components/Loading";
-import ErrorMessage from "../../../components/ErrorMessage";
-import MainScreen from "../../../components/MainScreen";
+import { createProductAction } from "../../../actions/sellerProductAction";
+import { authHeader } from "../../../actions/userActions";
+//import Loading from "../../../components/Loading";
+//import ErrorMessage from "../../../components/ErrorMessage";
+import MainScreen from "../../../components/MainScreen/MainScreen";
 import axios from "axios";
-import "./supplierProduct.css";
+//import "./supplierProduct.css";
 
 export default function ProductCreate({ history }) {
-	const supplier_Login = useSelector((state) => state.supplier_Login);
-	const { supplierInfo } = supplier_Login;
-	const [productName, setProductName] = useState("");
+	const admin_Login = useSelector((state) => state.admin_Login);
+	const seller_Login = useSelector((state) => state.seller_Login);
+	const { adminInfo } = admin_Login;
+	const { sellerInfo } = seller_Login;
+	const [brandName, setBrandName] = useState("");
+	const [categoryName, setCategoryName] = useState("");
+    const [productName, setProductName] = useState("");
 	const [productPrice, setProductPrice] = useState("");
 	const [productDescription, setProductDescription] = useState([]);
+	const [pic, setPic] = useState("");
+	
 
 	//create supplier new material
 	useEffect(() => {
 		const fetching = async () => {
-			const { data } = await axios.get(`user/supplier/product/create`, {
+			const { data } = await axios.get(`api/seller/product/create`, {
 				headers: authHeader(),
+
 			});
 			console.log(data);
 		};
@@ -37,12 +44,17 @@ export default function ProductCreate({ history }) {
 	const submitHandler = (e) => {
 		e.preventDefault();
 
-		dispatch(createProductAction(supplierInfo._id, productName, productPrice, productDescription));
-		if (!productName || !productPrice || !productDescription) return;
+		dispatch(createProductAction(sellerInfo._id,brandName,categoryName, productName, productPrice, productDescription,pic));
+		if (!brandName || !categoryName|| !productName || !productPrice || !productDescription) return;
 	};
 
 	useEffect(() => {}, []);
-	if (supplierInfo) {
+
+
+   
+
+
+	if (sellerInfo) {
 		return (
 			<div
 				className="productCreate"
@@ -51,7 +63,7 @@ export default function ProductCreate({ history }) {
 				}}
 			>
 				<br></br>
-				<MainScreen title="Create New Materials">
+				<MainScreen title="Create New Products">
 					<br></br>
 					<br></br>
 					<Button
@@ -64,7 +76,7 @@ export default function ProductCreate({ history }) {
 							border: "1px solid white",
 							boxShadow: "none",
 						}}
-						href="/product-list"
+						href="/seller-product-list"
 					>
 						{" "}
 						Back to Product List
@@ -85,7 +97,49 @@ export default function ProductCreate({ history }) {
 					>
 						<Card.Body>
 							<Form onSubmit={submitHandler}>
-								{error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
+								{/* {error && <ErrorMessage variant="danger">{error}</ErrorMessage>} */}
+
+								<Form.Group controlId="prodname">
+									<Form.Label
+										style={{
+											fontSize: 20,
+										}}
+									>
+										Brand Name
+									</Form.Label>
+									<Form.Control
+										style={{
+											height: 40,
+											fontSize: 18,
+										}}
+										type="text"
+										required
+										value={brandName}
+										onChange={(e) => setBrandName(e.target.value)}
+									/>
+								</Form.Group>
+
+								<Form.Group controlId="prodname">
+									<Form.Label
+										style={{
+											fontSize: 20,
+										}}
+									>
+										Category Name
+									</Form.Label>
+									<Form.Control
+										style={{
+											height: 40,
+											fontSize: 18,
+										}}
+										type="text"
+										required
+										value={categoryName}
+										onChange={(e) => setCategoryName(e.target.value)}
+									/>
+								</Form.Group>
+
+
 
 								<Form.Group controlId="prodname">
 									<Form.Label
@@ -146,7 +200,20 @@ export default function ProductCreate({ history }) {
 									/>
 								</Form.Group>
 
-								{loading && <Loading size={50} />}
+								<Form.Group controlId="pic">
+                                <Form.Label>Profile Picture</Form.Label>
+                                <Form.Control
+                                      id="custom-file"
+                                      type="file"
+                                      label="Upload Profile Picture"
+                                      custom
+									  value={pic}
+									  onChange={(e) => setPic(e.target.value)}
+                                />
+                                </Form.Group>
+
+
+								{/* {loading && <Loading size={50} />} */}
 								<Button
 									style={{
 										width: 100,

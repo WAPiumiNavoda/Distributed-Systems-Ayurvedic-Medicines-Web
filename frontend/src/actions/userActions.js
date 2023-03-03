@@ -6,6 +6,11 @@ import {
 	ADMIN_REGISTER_FAIL,
 	ADMIN_REGISTER_REQUEST,
 	ADMIN_REGISTER_SUCCESS,
+	SELLER_LOGIN_FAIL,
+	SELLER_LOGIN_REQUEST,
+	SELLER_LOGIN_SUCCESS,
+	SELLER_LOGOUT,
+	
 } from "../constants/userConstants";
 import axios from "axios";
 import swal from "sweetalert";
@@ -32,7 +37,8 @@ export const adminLogin = (email, password) => async (dispatch) => {
 			button: false,
 		});
 
-		console.log(data.type);
+
+	  console.log(data.type);
 	
         if(data.type=='admin'){
 			setTimeout(function () {
@@ -46,7 +52,7 @@ export const adminLogin = (email, password) => async (dispatch) => {
 			localStorage.setItem("userInfo", JSON.stringify(data));
 		}else if(data.type=='seller'){
 			setTimeout(function () {
-				window.location.href = "/sellerCategoryAll";
+				window.location.href = "/sellerDashboard";
 			}, 2000);
 			localStorage.setItem("sellerInfo", JSON.stringify(data));
 		}

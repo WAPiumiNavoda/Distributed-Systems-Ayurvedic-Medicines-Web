@@ -6,6 +6,10 @@ import {
 	ADMIN_REGISTER_FAIL,
 	ADMIN_REGISTER_REQUEST,
 	ADMIN_REGISTER_SUCCESS,
+	SELLER_LOGIN_FAIL,
+	SELLER_LOGIN_REQUEST,
+	SELLER_LOGIN_SUCCESS,
+	SELLER_LOGOUT,
 	
 } from "../constants/userConstants";
 
@@ -24,6 +28,23 @@ export const adminLoginReducer = (state = {}, action) => {
 			return state;
 	}
 };
+
+export const sellerLoginReducer = (state = {}, action) => {
+	switch (action.type) {
+		case ADMIN_LOGIN_REQUEST:
+			return { loading: true };
+		case ADMIN_LOGIN_SUCCESS:
+			return { loading: false, sellerInfo: action.payload };
+		case ADMIN_LOGIN_FAIL:
+			return { loading: false, error: action.payload };
+		case ADMIN_LOGOUT:
+			return {};
+
+		default:
+			return state;
+	}
+};
+
 
 //userRegister
 export const adminRegisterReducer  =(state={}, action) =>{

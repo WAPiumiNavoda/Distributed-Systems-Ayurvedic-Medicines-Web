@@ -11,6 +11,9 @@ import RegisterUser from './screens/RegisterUsers/RegisterUser';
 import AdminHome from './screens/AdminPages/AdminHome/AdminHome';
 import TopHome from './screens/HomePage/TopHome';
 import CartCheckout from './screens/CartCheckOut/CartCheckout';
+import ProductList from "./screens/productManagement/sellerProduct/ProductList";
+import SellerDashboard from './screens/static/dashboards/SellerDashboards';
+import ProductCreate from './screens/productManagement/sellerProduct/ProductCreate';
 
 
 const App = () => {
@@ -25,7 +28,9 @@ const App = () => {
       <Route path='/sellerCategoryAll' element={<Seller_CategoryAll />}/>
        <Route path='/userlogin' element={<UserLogin />}/>
        <Route path='/userregister' element={<RegisterUser />}/>
-
+       <Route path="/seller-product-list" element={<ProductList/>} />
+       <Route path="/sellerDashboard" element={<SellerDashboard/>}/>
+       <Route path="/seller-product-create" element={<ProductCreate/>}/>
        <Route path='/adminhome' element={<AdminHome />}/>
 
        <Route path='/tophome' element={<TopHome />}/>

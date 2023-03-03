@@ -14,7 +14,7 @@ const createProduct = asyncHandler(async (req, res) => {
 	const { seller,brandName,categoryName, productName,productPrice, productDescription,pic } = req.body;
 
     	//get company name
-	const sellers = await Seller.findOne({ _id: supplier });
+	const sellers = await Seller.findOne({ _id: seller });
 	const companyName = sellers.companyName;
 
 	if (!seller || !brandName || !categoryName || !productName || !productPrice || !productDescription || !pic) {
